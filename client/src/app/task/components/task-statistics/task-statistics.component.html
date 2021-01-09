@@ -1,0 +1,118 @@
+<app-navbar *ngIf="authService.adminRole === true"></app-navbar>
+<app-navbar-observer *ngIf="authService.observer === true"></app-navbar-observer>
+
+<div class="container col-11">
+  <h4 class="margine">{{ "statistics.task.buttontaskStatistics" | translate }}</h4>
+
+  <table class="table">
+    <tr class="table-primary">
+      <th scope="col"></th>
+      <th scope="col">{{ "task.taskList.name" | translate }}</th>
+      <th scope="col">{{ "statistics.task.NumberOfPosts" | translate }}</th>
+      <th scope="col">{{ "statistics.task.NumberOfPostsThatHaveAnnotationsDone" | translate }}</th>
+      <th scope="col">{{ "statistics.user.TaskCompleted" | translate }}</th>
+      <th scope="col">{{ "statistics.task.UsersAssignedToTheTask" | translate }}</th>
+      <th scope="col">{{ "statistics.task.DownloadTheAnnotationsAlreadyMade" | translate }}</th>
+    </tr>
+    <tbody *ngIf="taskStatics.length > 0">
+      <tr *ngFor="let t of taskStatics; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <!-- name -->
+
+        <td>{{ t.task_name }}</td>
+        <td>{{ t.count_post }}</td>
+        <td>
+          <span *ngIf="t.number_annotation == null">0</span
+          ><span *ngIf="t.number_annotation != null">{{ t.number_annotation }}</span>
+        </td>
+        <td>
+          <span
+            *ngIf="
+              t.total_assigned_users * t.count_post == t.number_annotation &&
+              t.total_assigned_users != null
+            "
+            >Si</span
+          >
+          <span
+            *ngIf="
+              t.total_assigned_users * t.count_post != t.number_annotation ||
+              t.total_assigned_users == null
+            "
+            >No</span
+          >
+        </td>
+
+        <!--  <td>
+          <span *ngIf="!t.totalassignedusers">0</span>
+          <span *ngIf="t.totalassignedusers"></span>{{ t.totalassignedusers }}
+        </td> -->
+        <td>
+          <button [routerLink]="['/task-statistics-users', t.id_task]" class="btn btn-info">
+            <i class="fa fa-eye"></i>
+          </button>
+        </td>
+        <!-- donwload -->
+        <td>
+          <button
+            (click)="saveIdTask(t)"
+            class="btn btn-info"
+            data-toggle="modal"
+            data-target="#exampleModalCenter"
+          >
+            <i class="fa fa-download"></i>
+          </button>
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="exampleModalCenter"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">
+                    {{ "message.post.chooseTheFileYouWantToDownload" | translate }}
+                  </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    (click)="downloadCSVFileWithoutAnnotations()"
+                    type="button"
+                    class="btn btn-primary"
+                    data-dismiss="modal"
+                  >
+                    Post
+                  </button>
+                  <button
+                    (click)="downloadAnnotation()"
+                    type="button"
+                    data-dismiss="modal"
+                    class="btn btn-primary"
+                  >
+                    {{ "navbar.annotations" | translate }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- lista di task vuoto -->
+  <div *ngIf="taskStatics.length === 0" class="alert alert-warning text-center mt-3">
+    <h4 class="alert-heading">
+      {{ "task.alert.ThereAreNoTasksCreated" | translate }}
+    </h4>
+    <p>
+      <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+  </div>
+</div>

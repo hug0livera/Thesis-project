@@ -1,0 +1,153 @@
+<app-navbar></app-navbar>
+
+<!-- breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a [routerLink]="['/task-edit', this.idTask]">
+        {{ "task.updateTask.updateTask" | translate }}</a
+      >
+    </li>
+    <li class="breadcrumb-item">
+      <a></a>
+    </li>
+  </ol>
+</nav>
+
+<div class="container h-100 center_div">
+  <div class="row h-100 justify-content-center">
+    <!---------------------- Form Creare nuovo task --------------------------->
+    <div class="container col-6">
+      <form ngNativeValidate [formGroup]="formTask" (ngSubmit)="editTask()">
+        <h4>{{ "task.updateTask.updateTask" | translate }}</h4>
+
+        <hr />
+        <!-- name -->
+        <div class="form-group">
+          <label> {{ "task.createNewTask.taskName" | translate }} </label>
+          <input
+            class="form-control"
+            required
+            formControlName="task_name"
+            type="text"
+            name="task_name"
+            [placeholder]="'task.createNewTask.taskName' | translate"
+          />
+        </div>
+
+        <!-- descrizione -->
+        <div class="form-group">
+          <label for=""> {{ "task.createNewTask.taskDescription" | translate }} </label>
+          <textarea
+            class="form-control"
+            rows="3"
+            required
+            formControlName="task_description"
+            type="text"
+            id="task_description"
+            maxlength="30"
+            [placeholder]="'task.createNewTask.taskDescription' | translate"
+          ></textarea>
+        </div>
+
+        <!-- url  -->
+        <div class="form-group">
+          <label for=""> {{ "userco.guide" | translate }} </label>
+          <textarea
+            class="form-control"
+            rows="3"
+            required
+            formControlName="link_to_guidelines"
+            type="text"
+            id="link_to_guidelines"
+            maxlength="200"
+            [placeholder]="'userco.guide' | translate"
+          ></textarea>
+        </div>
+
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            <!-- valore di casualità -->
+            <div class="form-group">
+              <label for="">{{ "task.createNewTask.chanceValue" | translate }} </label>
+              <input
+                required
+                type="chance_value"
+                formControlName="chance_value"
+                class="form-control"
+                aria-describedby="chance_value value"
+                [placeholder]="'task.createNewTask.chanceValue' | translate"
+              />
+            </div>
+
+            <!--valore di soglia -->
+            <div class="form-group">
+              <label for="">{{ "task.createNewTask.randomThreshold" | translate }} </label>
+              <input
+                required
+                type="number"
+                formControlName="random_threshold"
+                class="form-control"
+                aria-describedby="chance value"
+                [placeholder]="'task.createNewTask.randomThreshold' | translate"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- button aggiornare task -->
+        <button type="submit" class="btn btn-success">
+          <i class="fa fa-pen"></i> {{ "task.updateTask.buttonUpdate" | translate }}
+        </button>
+      </form>
+      <hr />
+      <button
+        class="btn btn-secondary"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapseExample"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        <i class="fa fa-plus"></i> {{ "task.taskList.advancedOptions" | translate }}
+      </button>
+    </div>
+
+    <div class="container col-6">
+      <!-- button -->
+      <div>
+        <button
+          [routerLink]="['/task']"
+          type="button"
+          class="btn btn-outline-primary"
+          style="float: right; margin-bottom: 25px"
+        >
+          <i class="fa fa-arrow-left"></i> {{ "task.taskList.task" | translate }}
+        </button>
+      </div>
+
+      <!------------------------------------------------- table update --------------------------------------->
+      <table *ngIf="idTask" class="table">
+        <tr class="table-primary">
+          <th scope="col"></th>
+          <th scope="col">{{ "task.updateTask.category" | translate }}</th>
+          <th scope="col">{{ "task.updateTask.updateCategory" | translate }}</th>
+        </tr>
+        <tbody cdkDropList (cdkDropListDropped)="onDropped($event)">
+          <tr *ngFor="let c of category; let i = index" cdkDrag>
+            <th scope="row">{{ i + 1 }}</th>
+
+            <td>{{ c.tag_category_name }}</td>
+            <td>
+              <button
+                [routerLink]="['/category-edit', this.idTask, c.id_category]"
+                class="btn btn-success btn-sm"
+              >
+                <i class="fa fa-pen"></i> {{ "task.updateTask.buttonUpdate" | translate }}
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

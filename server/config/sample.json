@@ -1,0 +1,25 @@
+{
+  "dbConfig": {
+    "database": "letmetag",
+    "user": "postgres",
+    "password": "xxxxx",
+    "sequelize": {
+      "host": "localhost",
+      "dialect": "postgres",
+      "define": {
+        "timestamps": false
+      }
+    }
+  },
+  "transportConfig": {
+    "service": "xxxxx",
+    "auth": {
+      "user": "xxxxx@gmail.com",
+      "pass": "xxxxx"
+    }
+  },
+  "telegramConfig": {
+    "token": "xxxxxx:xxxxxx-ppppppppp",
+    "token_admin": "xxxxxxxx:yyyyyyy-uuuuuu"
+  }
+}

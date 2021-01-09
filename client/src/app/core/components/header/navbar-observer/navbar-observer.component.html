@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="home">LetMeTag </a>
+
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <!--  generic Users-->
+      <li
+        *ngIf="guards.value && authService.isLogged()"
+        class="nav-item dropdown"
+        routerLinkActive="active"
+      >
+        <a class="nav-link" [routerLink]="['/user-annotation']">
+          {{ "navbar.annotations" | translate }}
+        </a>
+      </li>
+
+      <!-- Statistics -->
+      <li
+        *ngIf="guards.value && authService.isLogged()"
+        class="nav-item dropdown"
+        routerLinkActive="active"
+      >
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          {{ "user.userList.observer" | translate }}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <!-- user statistics -->
+          <a class="dropdown-item" [routerLink]="['/user-statistics']">{{
+            "navbar.userStatistics" | translate
+          }}</a>
+          <div class="dropdown-divider"></div>
+          <!-- task statistics -->
+          <a class="dropdown-item" [routerLink]="['/task-statistics']">{{
+            "navbar.taskStatistics" | translate
+          }}</a>
+        </div>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+      <li
+        *ngIf="guards.value && authService.isLogged()"
+        class="nav-item active"
+        routerLinkActive="active"
+      >
+        <a (click)="logout()" class="pointer nav-link">LOGOUT </a>
+      </li>
+    </ul>
+  </div>
+</nav>

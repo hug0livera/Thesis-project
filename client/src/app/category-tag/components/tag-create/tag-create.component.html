@@ -1,0 +1,182 @@
+<app-navbar></app-navbar>
+
+<!-- -----------------------------------breadcrumb ------------------------------------->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a [routerLink]="['/task-create']">{{ "task.createNewTask.createNewTask" | translate }}</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a [routerLink]="['/create-category', this.idTask]">{{
+        "task.addCategories.addCategories" | translate
+      }}</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a [routerLink]="['/create-tag', this.id, this.idTask]">{{
+        "task.addTag.addTag" | translate
+      }}</a>
+    </li>
+  </ol>
+</nav>
+
+<div class="container h-100 center_div" *ngFor="let t of task">
+  <!-- button -->
+  <div>
+    <button
+      (click)="addCategory(this.idTask)"
+      type="button"
+      class="btn btn-outline-primary"
+      style="float: right"
+    >
+      <i class="fa fa-arrow-left"></i>
+      {{ "task.addCategories.buttonAddModeCategories" | translate }}
+    </button>
+  </div>
+
+  <h4 style="text-align: center; color: blue">
+    {{ "task.createNewTask.taskInConstruction" | translate }}: {{ t.task_name }}
+  </h4>
+</div>
+
+<div class="container center_div">
+  <div class="row h-100 justify-content-center">
+    <div class="container col-6">
+      <form ngNativeValidate [formGroup]="formTag" (ngSubmit)="createTag()">
+        <!---------------------- Form Creare nuovo Tag --------------------------->
+        <h4>{{ "task.addTag.addTag" | translate }}</h4>
+        <hr />
+
+        <div class="form-group">
+          <label for="">{{ "task.addTag.tagName" | translate }}</label>
+          <input
+            formControlName="tag_name"
+            type="text"
+            class="form-control"
+            [placeholder]="'task.addTag.tagName' | translate"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="">{{ "task.addTag.color" | translate }}</label>
+          <input
+            required
+            readonly="readonly"
+            maxlength="6"
+            formControlName="color"
+            type="text"
+            class="form-control"
+            [(colorPicker)]="color"
+            [style.background]="color"
+          />
+        </div>
+
+        <label for=""> {{ "task.addTag.behavior" | translate }} </label>
+        <!-- behavior -->
+        <div class="container">
+          <div class="form-group">
+            <div class="row">
+              <label class="md-check">
+                <input
+                  type="radio"
+                  value="0"
+                  name="behavior"
+                  formControlName="behavior"
+                  required
+                  ngModel
+                />
+                {{ "task.addTag.normalTag" | translate }}
+              </label>
+            </div>
+            <div class="row">
+              <label class="md-check" style="margin-right: 30px">
+                <input
+                  type="radio"
+                  value="1"
+                  name="behavior"
+                  formControlName="behavior"
+                  required
+                  ngModel
+                />
+                {{ "task.addTag.cancelTheCategory" | translate }}
+              </label>
+            </div>
+            <div class="row">
+              <label class="md-check" style="margin-right: 30px">
+                <input
+                  type="radio"
+                  value="2"
+                  name="behavior"
+                  formControlName="behavior"
+                  required
+                  ngModel
+                />
+                {{ "task.addTag.cancelAllTagsInTheSelection" | translate }}
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+          <i class="fa fa-plus"></i> {{ "task.addCategories.buttonAdd" | translate }}
+        </button>
+      </form>
+    </div>
+
+    <!---------------------------------------------------------------- table ------------------------>
+    <table class="table col-6">
+      <thead>
+        <tr *ngFor="let t of categories">
+          <th colspan="2" style="text-align: center">
+            <h5>{{ "task.addTag.categoryName" | translate }}: {{ t.tag_category_name }}</h5>
+          </th>
+        </tr>
+        <tr class="table-primary">
+          <th scope="col"></th>
+          <th scope="col">{{ "task.addTag.tag" | translate }}</th>
+          <th scope="col">{{ "task.addCategories.remove" | translate }}</th>
+        </tr>
+      </thead>
+
+      <tbody *ngIf="tags.length > 0" cdkDropList (cdkDropListDropped)="onDropped($event)">
+        <tr *ngFor="let t of tags; let i = index" cdkDrag>
+          <th scope="row">{{ i + 1 }}</th>
+
+          <td>
+            <span
+              style="
+                color: #000000;
+                border-radius: 25px;
+                border-style: solid;
+                border-width: 2px;
+                padding: 10px 24px;
+              "
+              [style.border-color]="t.color"
+              >{{ t.tag_name }}</span
+            >
+          </td>
+          <td>
+            <button (click)="deleteTag(t.id_tag)" class="btn btn-danger btn-sm">
+              {{ "task.addCategories.remove" | translate }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+
+      <tbody *ngIf="tags.length === 0">
+        <tr>
+          <td colspan="3">
+            <div class="alert alert-warning text-center mt-3">
+              <h4 class="alert-heading">
+                {{ "task.alert.thereAreNoTagsCreated" | translate }}
+              </h4>
+              <p>
+                <i class="fa fa-exclamation fa-2x"></i>
+              </p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

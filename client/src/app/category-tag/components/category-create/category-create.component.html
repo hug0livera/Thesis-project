@@ -1,0 +1,171 @@
+<app-navbar></app-navbar>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a [routerLink]="['/task-create']">{{ "task.createNewTask.createNewTask" | translate }}</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a [routerLink]="['/create-category', this.id]">{{
+        "task.addCategories.addCategories" | translate
+      }}</a>
+    </li>
+  </ol>
+</nav>
+
+<div class="container h-100 center_div" *ngFor="let t of tasks">
+  <h4 style="text-align: center; color: blue">
+    {{ "task.createNewTask.taskInConstruction" | translate }}: {{ t.task_name }}
+  </h4>
+</div>
+
+<div class="container h-100 center_div">
+  <div class="row h-100 justify-content-center">
+    <div class="container col-6">
+      <form ngNativeValidate [formGroup]="formCategory" (ngSubmit)="createCategory()">
+        <h4>{{ "task.addCategories.addCategories" | translate }}</h4>
+        <hr />
+
+        <!--Nome della categoria -->
+        <div class="form-group" required>
+          <label for="">{{ "task.addCategories.categoryName" | translate }}</label>
+          <input
+            required
+            formControlName="tag_category_name"
+            type="text"
+            class="form-control"
+            aria-describedby="emailHelp"
+            [placeholder]="'task.addCategories.categoryName' | translate"
+          />
+        </div>
+
+        <!-- Obligatorietà -->
+        <div style="margin-bottom: 20px">
+          <div class="custom-control custom-radio custom-control-inline">
+            <input
+              type="radio"
+              class="custom-control-input"
+              id="defaultInline1"
+              value="true"
+              name="mandatory"
+              formControlName="mandatory"
+              required
+            />
+            <label class="custom-control-label" for="defaultInline1">{{
+              "task.addCategories.obligatory" | translate
+            }}</label>
+          </div>
+
+          <div class="custom-control custom-radio custom-control-inline">
+            <input
+              type="radio"
+              class="custom-control-input"
+              id="defaultInline2"
+              value="false"
+              name="mandatory"
+              formControlName="mandatory"
+              required
+            />
+            <label class="custom-control-label" for="defaultInline2">{{
+              "task.addCategories.optional" | translate
+            }}</label>
+          </div>
+        </div>
+
+        <!-- Funzionalità -->
+
+        <div style="margin-bottom: 20px">
+          <div class="custom-control custom-radio custom-control-inline">
+            <input
+              type="radio"
+              class="custom-control-input"
+              id="multi_choice"
+              value="true"
+              name="multi_choice"
+              formControlName="multi_choice"
+              required
+            />
+            <label class="custom-control-label" for="multi_choice">{{
+              "task.addCategories.multipleChoice" | translate
+            }}</label>
+          </div>
+
+          <div class="custom-control custom-radio custom-control-inline">
+            <input
+              type="radio"
+              class="custom-control-input"
+              id="multi_choice2"
+              value="false"
+              name="multi_choice"
+              formControlName="multi_choice"
+              required
+            />
+            <label class="custom-control-label" for="multi_choice2">{{
+              "task.addCategories.singleChoice" | translate
+            }}</label>
+          </div>
+        </div>
+
+        <!-- button Aggiungere Categoria-->
+        <button type="submit" class="btn btn-primary mr-5">
+          <i class="fa fa-plus"></i> {{ "task.addCategories.buttonAdd" | translate }}
+        </button>
+      </form>
+      <hr />
+      <!-- button finalized task -->
+      <button (click)="taskFinished()" class="btn btn-danger btn">
+        <i class="fa fa-check-square"></i>
+        {{ "task.addCategories.buttonFinalizeTask" | translate }}
+      </button>
+      <!-- button cancel task -->
+
+      <button (click)="deleteTask()" style="float: right" class="btn btn-danger btn">
+        <i class="fa fa-window-close"></i>
+        {{ "task.taskList.cancelTasks" | translate }}
+      </button>
+    </div>
+
+    <!--     tabelle delle categorie create -->
+    <table class="table col-6">
+      <thead>
+        <tr class="table-primary">
+          <th scope="col"></th>
+          <th scope="col">{{ "task.addCategories.buttonCateogry" | translate }}</th>
+          <th scope="col">{{ "task.addCategories.addTag" | translate }}</th>
+          <th scope="col">{{ "task.addCategories.remove" | translate }}</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="categories.length > 0" cdkDropList (cdkDropListDropped)="onDropped($event)">
+        <tr *ngFor="let t of categories; let i = index" cdkDrag>
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ t.tag_category_name }}</td>
+          <td>
+            <button (click)="createTag(t.id_category, this.id)" class="btn btn-primary btn-sm">
+              <i class="fa fa-plus"></i> {{ "task.addCategories.addTag" | translate }}
+            </button>
+          </td>
+
+          <td>
+            <button (click)="deleteCategory(t.id_category)" class="btn btn-danger btn-sm">
+              {{ "task.addCategories.remove" | translate }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="categories.length === 0">
+        <tr>
+          <td colspan="4">
+            <div class="alert alert-warning text-center mt-3">
+              <h4 class="alert-heading">
+                {{ "task.alert.thisTaskHasNoCategories" | translate }}
+              </h4>
+              <p>
+                <i class="fa fa-exclamation fa-2x"></i>
+              </p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

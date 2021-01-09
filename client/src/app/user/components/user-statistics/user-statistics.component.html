@@ -1,0 +1,53 @@
+<app-navbar *ngIf="authService.adminRole === true"></app-navbar>
+<app-navbar-observer *ngIf="authService.observer === true"></app-navbar-observer>
+
+<div class="container col-11">
+  <h4 class="margine">{{ "statistics.user.userStatistics" | translate }}</h4>
+
+  <!-- User list with its statistics -->
+  <table class="table">
+    <tr class="table-primary">
+      <th scope="col"></th>
+      <th scope="col">{{ "task.taskList.name" | translate }}</th>
+      <th scope="col">{{ "user.userList.email" | translate }}</th>
+      <th scope="col">{{ "statistics.user.NumberOfAssignedTasks" | translate }}</th>
+      <th scope="col">
+        {{ "statistics.user.DaysPassedSinceTheirLastEntry" | translate }}
+      </th>
+      <th scope="col">{{ "statistics.user.AssignedTasks" | translate }}</th>
+    </tr>
+    <tbody *ngIf="usersStatistics.length > 0">
+      <tr *ngFor="let user of usersStatistics; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <span *ngIf="!user.totaltaskassign">0</span>
+          <span *ngIf="user.totaltaskassign">{{ user.totaltaskassign }}</span>
+        </td>
+        <td>
+          <span *ngIf="user.day != null">{{ user.day }}</span>
+          <span *ngIf="user.day == null">{{
+            "statistics.user.HeDidntMakeAnyAnnotation" | translate
+          }}</span>
+        </td>
+        <td>
+          <button [routerLink]="['/user-statistics-task', user.id_user]" class="btn btn-info">
+            <i class="fa fa-eye"></i>
+          </button>
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- lista di task vuoto -->
+  <div *ngIf="usersStatistics.length === 0" class="alert alert-warning text-center mt-3">
+    <h4 class="alert-heading">
+      {{ "task.alert.ThereAreNoUsersCreated" | translate }}
+    </h4>
+    <p>
+      <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+  </div>
+</div>

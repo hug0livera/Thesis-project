@@ -1,0 +1,138 @@
+<app-navbar></app-navbar>
+
+<div class="container h-100 center_div">
+  <!-- button -->
+
+  <div>
+    <button
+      [routerLink]="['/user']"
+      type="button"
+      class="btn btn-outline-primary"
+      style="float: right"
+    >
+      <i class="fa fa-arrow-left"></i> {{ "user.userList.user" | translate }}
+    </button>
+  </div>
+
+  <!-- form to create a new user -->
+  <div class="row h-100 justify-content-center align-items-center">
+    <form ngNativeValidate [formGroup]="form" (ngSubmit)="updateUser()" class="col-6">
+      <h4>{{ "task.updateTask.updateUser" | translate }}</h4>
+      <hr />
+      <!-- name -->
+      <div class="form-group">
+        <label for="exampleInputEmail1">{{ "user.userList.name" | translate }}</label>
+        <input
+          required
+          formControlName="name"
+          name="name"
+          type="name"
+          class="form-control"
+          id="name"
+          [placeholder]="'user.userList.name' | translate"
+        />
+      </div>
+
+      <!-- mail -->
+      <div class="form-group">
+        <label for="exampleInputEmail1">{{ "user.userList.email" | translate }}</label>
+        <input
+          required
+          formControlName="email"
+          type="email"
+          class="form-control"
+          name="email"
+          id="email"
+          placeholder="email"
+        />
+      </div>
+
+      <!-- gender -->
+      <label for="exampleInputPassword1">{{ "user.userList.gender" | translate }}</label>
+      <div style="margin-bottom: 20px">
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            type="radio"
+            class="custom-control-input"
+            id="gender1"
+            value="M"
+            name="gender"
+            formControlName="gender"
+            required
+          />
+          <label class="custom-control-label" for="gender1">{{
+            "user.createUser.male" | translate
+          }}</label>
+        </div>
+
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            type="radio"
+            class="custom-control-input"
+            id="gender2"
+            value="F"
+            name="gender"
+            formControlName="gender"
+            required
+          />
+          <label class="custom-control-label" for="gender2">{{
+            "user.createUser.female" | translate
+          }}</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            type="radio"
+            class="custom-control-input"
+            id="gender3"
+            value="O"
+            name="gender"
+            formControlName="gender"
+            required
+          />
+          <label class="custom-control-label" for="gender3">{{
+            "user.createUser.other" | translate
+          }}</label>
+        </div>
+      </div>
+
+      <!-- ruolo -->
+      <label for="exampleInputPassword1">{{ "user.userList.role" | translate }}</label>
+      <div style="margin-bottom: 20px">
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            type="radio"
+            class="custom-control-input"
+            id="observer1"
+            [value]="false"
+            name="observer"
+            formControlName="observer"
+            required
+          />
+          <label class="custom-control-label" for="observer1">{{
+            "user.userList.generic" | translate
+          }}</label>
+        </div>
+
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            type="radio"
+            class="custom-control-input"
+            id="observer2"
+            [value]="true"
+            name="observer"
+            formControlName="observer"
+            required
+          />
+          <label class="custom-control-label" for="observer2">{{
+            "user.userList.observer" | translate
+          }}</label>
+        </div>
+      </div>
+
+      <!-- button -->
+      <button type="submit" class="btn btn-primary">
+        <i class="fa fa-plus"></i> {{ "task.updateTask.buttonUpdate" | translate }}
+      </button>
+    </form>
+  </div>
+</div>

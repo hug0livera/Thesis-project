@@ -1,0 +1,137 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <!-- button -->
+  <div>
+    <button
+      [routerLink]="['/task']"
+      type="button"
+      class="btn btn-outline-primary"
+      style="float: right"
+    >
+      <i class="fa fa-arrow-left"></i> {{ "task.taskList.task" | translate }}
+    </button>
+  </div>
+
+  <!--   nome of the task -->
+  <div *ngFor="let p of post; first as isFirst">
+    <span *ngIf="isFirst"
+      ><h4 class="margine">{{ "task.taskList.task" | translate }} : {{ p.task_name }}</h4></span
+    >
+  </div>
+
+  <!-- bottone -->
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button (click)="listPost()" type="button" class="btn btn-primary">
+      {{ "task.post.list" | translate }}
+    </button>
+    <button (click)="cardPost()" type="button" class="btn btn-primary">
+      {{ "task.post.grid" | translate }}
+    </button>
+  </div>
+
+  <!--------------------------------------------   upload images --------------------------------->
+  <div style="float: right">
+    <input type="file" #inputFile (change)="insertFile($event.target.files[0])" />
+    <button class="btn btn-info mr-1" (click)="uploadFile()">
+      <i class="fa fa-file-archive"></i> Decomprimere file zip
+      <!-- {{ "task.post.uploadZipFileWithImages" | translate }} -->
+    </button>
+
+    <button class="btn btn-success" (click)="uploadImage()">
+      <i class="fa fa-upload"></i>
+
+      Carica l'immagini
+      <!-- {{ "task.post.buttonUpload" | translate }} -->
+    </button>
+  </div>
+
+  <hr />
+
+  <!--------------------------------------------- table --------------------------------------------------------------->
+  <div *ngIf="seePost">
+    <table class="table">
+      <tr class="table-primary">
+        <th scope="col"></th>
+        <th scope="col">URI</th>
+        <th scope="col">{{ "task.post.text" | translate }}</th>
+        <th scope="col">{{ "task.post.category" | translate }}</th>
+        <th scope="col">{{ "task.post.image" | translate }}</th>
+      </tr>
+      <tbody *ngIf="post.length > 0">
+        <tr
+          *ngFor="
+            let p of post | paginate: { itemsPerPage: count, currentPage: pageActual };
+            let i = index
+          "
+        >
+          <th scope="row">{{ (pageActual - 1) * count + i + 1 }}</th>
+
+          <td>{{ p.uri }}</td>
+          <td>{{ p.text }}</td>
+          <td>{{ p.category }}</td>
+          <td>
+            <span *ngIf="p.image_path">
+              <img [src]="p.image_path" alt="..." height="25" width="40"
+            /></span>
+
+            <span *ngIf="!p.image_path">
+              <img src="../../../../assets/img/default.png" alt="..." height="25" width="40"
+            /></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <hr />
+    <!-- pagination-control -->
+    <pagination-controls
+      style="text-align: center"
+      (pageChange)="pageActual = $event"
+    ></pagination-controls>
+  </div>
+
+  <!---------------------------------------------------- cards ------------------------------------->
+  <div *ngIf="!seePost" class="container">
+    <div class="card-columns">
+      <div
+        class="col-md-12"
+        *ngFor="
+          let p of post | paginate: { itemsPerPage: 9, currentPage: pageActual };
+          let i = index
+        "
+      >
+        <div class="card" *ngIf="p.text">
+          <span *ngIf="p.image_path"
+            ><img [src]="p.image_path" class="card-img-top" alt="..."
+          /></span>
+          <span *ngIf="!p.image_path">
+            <img src="../../../../assets/img/default.png" class="card-img-top" alt="..."
+          /></span>
+          <div class="card-body">
+            <h5 class="card-title">{{ p.uri }}</h5>
+            <p class="card-text">
+              {{ p.text }}
+            </p>
+            <p class="card-text">
+              {{ p.category }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <!-- pagination-control -->
+    <pagination-controls
+      style="text-align: center"
+      (pageChange)="pageActual = $event"
+    ></pagination-controls>
+  </div>
+
+  <!-- lista di task vuoto -->
+  <div *ngIf="post.length === 0" class="alert alert-warning text-center mt-3">
+    <h4 class="alert-heading">{{ "task.alert.ThereAreNoPosts" | translate }}t</h4>
+    <p>
+      <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+  </div>
+</div>

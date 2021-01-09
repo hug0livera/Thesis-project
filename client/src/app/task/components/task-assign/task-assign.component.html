@@ -1,0 +1,108 @@
+<app-navbar></app-navbar>
+
+<div class="container col-10">
+  <!-- button -->
+  <div>
+    <button [routerLink]="['/task']" type="button" class="btn btn-primary" style="float: right">
+      <i class="fa fa-arrow-left"></i> Task
+    </button>
+  </div>
+
+  <ng-container *ngFor="let t of tasks; first as isFirst">
+    <!--   nome of the task -->
+    <div>
+      <span *ngIf="isFirst">
+        <h4 class="margine">Task: {{ t.task_name }}</h4>
+      </span>
+    </div>
+
+    <table class="table">
+      <tr class="table-primary">
+        <th scope="col"></th>
+        <th scope="col">{{ "task.taskList.name" | translate }}</th>
+        <th scope="col">Email</th>
+        <th scope="col">{{ "task.assignTask.assignTask" | translate }}</th>
+      </tr>
+      <tbody *ngIf="tasks.length > 0">
+        <tr *ngFor="let user of users; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+
+          <td>
+            <button
+              (click)="assignTaskUser(t.id_task, user.id_user)"
+              class="btn btn-primary btn-sm"
+            >
+              {{ "task.assignTask.buttonAssign" | translate }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- lista di task vuoto -->
+    <div *ngIf="users.length === 0" class="alert alert-warning text-center mt-3">
+      <h4 class="alert-heading">{{ "task.alert.ThereAreNoUsersToAssign" | translate }}</h4>
+      <p>
+        <i class="fa fa-exclamation fa-2x"></i>
+      </p>
+    </div>
+    <hr />
+    <!-- Lista degli utenti assegnati -->
+    <h4>{{ "task.assignTask.listOfAssignedUsers" | translate }}</h4>
+    <hr />
+
+    <table class="table">
+      <tr class="table-primary">
+        <th scope="col"></th>
+        <th scope="col">{{ "task.taskList.name" | translate }}</th>
+        <th scope="col">{{ "task.assignTask.mail" | translate }}</th>
+        <th scope="col">{{ "task.assignTask.deleteAssignment" | translate }}</th>
+        <th scope="col">{{ "task.assignTask.disableAssignment" | translate }}</th>
+      </tr>
+      <tbody *ngIf="usersAssignedToTask.length > 0">
+        <tr *ngFor="let user of usersAssignedToTask; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+
+          <td>
+            <button
+              (click)="deleteTaskAssignment(user.id_user)"
+              [disabled]="!user.active"
+              class="btn btn-danger btn-sm"
+            >
+              {{ "task.addCategories.remove" | translate }}
+            </button>
+          </td>
+          <td>
+            <button
+              *ngIf="user.active"
+              (click)="deactivateAssignTaskUser(user)"
+              class="btn btn-danger btn-sm"
+            >
+              {{ "task.assignTask.deactivate" | translate }}
+            </button>
+            <button
+              *ngIf="!user.active"
+              (click)="deactivateAssignTaskUser(user)"
+              class="btn btn-dark btn-sm"
+            >
+              {{ "task.assignTask.activate" | translate }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- lista di utenti assegnati -->
+    <div *ngIf="usersAssignedToTask.length === 0" class="alert alert-warning text-center mt-3">
+      <h4 class="alert-heading">{{ "task.alert.thereAreNoAssignedUsers" | translate }}</h4>
+      <p>
+        <i class="fa fa-exclamation fa-2x"></i>
+      </p>
+    </div>
+  </ng-container>
+</div>

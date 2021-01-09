@@ -1,0 +1,163 @@
+<app-navbar></app-navbar>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a [routerLink]="['/task-create']">{{ "task.taskList.buttonCreateNewTask" | translate }}</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a></a>
+    </li>
+  </ol>
+</nav>
+
+<div class="container h-100 center_div">
+  <div class="row h-100 justify-content-center">
+    <!---------------------- Form Creare nuovo task --------------------------->
+    <div class="container col-6">
+      <form ngNativeValidate [formGroup]="formTask" (ngSubmit)="createTask()">
+        <h4>{{ "task.createNewTask.createNewTask" | translate }}</h4>
+        <hr />
+        <!-- name -->
+        <div class="form-group">
+          <label> {{ "task.createNewTask.taskName" | translate }} </label>
+          <input
+            required
+            class="form-control"
+            formControlName="task_name"
+            type="text"
+            name="task_name"
+            [placeholder]="'task.createNewTask.taskName' | translate"
+          />
+        </div>
+
+        <!-- descrizione -->
+        <div class="form-group">
+          <label for=""> {{ "task.createNewTask.taskDescription" | translate }} </label>
+
+          <textarea
+            class="form-control"
+            rows="3"
+            required
+            formControlName="task_description"
+            type="text"
+            id="task_description"
+            maxlength="200"
+            [placeholder]="'task.createNewTask.taskDescription' | translate"
+          ></textarea>
+        </div>
+
+        <!-- url  -->
+        <div class="form-group">
+          <label for=""> {{ "userco.guide" | translate }} </label>
+          <textarea
+            class="form-control"
+            rows="3"
+            required
+            formControlName="link_to_guidelines"
+            type="text"
+            id="link_to_guidelines"
+            maxlength="200"
+            [placeholder]="'userco.guide' | translate"
+          ></textarea>
+        </div>
+
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            <!-- valore di casualità -->
+            <div class="form-group">
+              <label for=""> {{ "task.createNewTask.chanceValue" | translate }} </label>
+              <input
+                type="number"
+                step="any"
+                min="0"
+                formControlName="chance_value"
+                class="form-control"
+                aria-describedby="chance value"
+                [placeholder]="'task.createNewTask.chanceValue' | translate"
+              />
+            </div>
+
+            <!--valore di soglia -->
+            <div class="form-group">
+              <label for="">{{ "task.createNewTask.randomThreshold" | translate }} </label>
+              <input
+                type="number"
+                step="any"
+                min="0"
+                formControlName="random_threshold"
+                class="form-control"
+                aria-describedby="chance value"
+                [placeholder]="'task.createNewTask.randomThreshold' | translate"
+              />
+            </div>
+          </div>
+        </div>
+        <hr />
+        <!-- button creare task -->
+        <button type="submit" class="btn btn-primary">
+          <i class="fa fa-plus"></i> {{ "user.createUser.buttonCreate" | translate }}
+        </button>
+      </form>
+      <hr />
+      <button
+        class="btn btn-secondary"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapseExample"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        <i class="fa fa-plus"></i> {{ "task.taskList.advancedOptions" | translate }}
+      </button>
+    </div>
+
+    <div class="container col-6">
+      <!-- button -->
+      <div>
+        <button
+          [routerLink]="['/task']"
+          type="button"
+          class="btn btn-outline-primary"
+          style="float: right; margin-bottom: 25px"
+        >
+          <i class="fa fa-arrow-left"></i> {{ "task.taskList.task" | translate }}
+        </button>
+      </div>
+
+      <!-- table create-->
+      <table class="table">
+        <tr class="table-primary">
+          <th scope="col"></th>
+          <th scope="col">{{ "task.createNewTask.taskInConstruction" | translate }}</th>
+          <th scope="col">{{ "task.addCategories.addCategories" | translate }}</th>
+        </tr>
+        <tbody *ngIf="tasks.length > 0">
+          <tr *ngFor="let t of tasks; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ t.task_name }}</td>
+            <td>
+              <button [routerLink]="['/create-category', t.id_task]" class="btn btn-primary btn-sm">
+                <i class="fa fa-plus"></i> {{ "task.addCategories.buttonAdd" | translate }}
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="tasks.length === 0">
+          <tr>
+            <td colspan="3">
+              <div class="alert alert-warning text-center mt-3">
+                <h4 class="alert-heading">
+                  {{ "task.alert.ThereAreNoTasksUnderConstruction" | translate }}
+                </h4>
+                <p>
+                  <i class="fa fa-exclamation fa-2x"></i>
+                </p>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

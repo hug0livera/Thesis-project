@@ -1,0 +1,291 @@
+<app-navbar></app-navbar>
+
+<div class="container col-11">
+  <!-- button -->
+  <div>
+    <button
+      [routerLink]="['/task-create']"
+      type="button"
+      class="btn btn-primary"
+      style="float: right"
+    >
+      <i class="fa fa-tasks"></i> {{ "task.taskList.buttonCreateNewTask" | translate }}
+    </button>
+  </div>
+
+  <h4 class="margine">Task</h4>
+
+  <!-- lists of tasks -->
+  <table class="table">
+    <tr class="table-primary">
+      <th scope="col"></th>
+      <th scope="col">{{ "task.taskList.name" | translate }}</th>
+      <th scope="col">{{ "task.taskList.state" | translate }}</th>
+      <th scope="col">{{ "task.taskList.categoriesAndTags" | translate }}</th>
+      <th scope="col">{{ "task.taskList.actions" | translate }}</th>
+      <th scope="col">Post</th>
+      <th scope="col">{{ "task.taskList.uploadPost" | translate }}</th>
+
+      <th scope="col">{{ "task.taskList.assignTask" | translate }}</th>
+    </tr>
+    <tbody *ngIf="!uploading && tasks.length > 0">
+      <tr *ngFor="let t of tasks; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+
+        <!-- ---------------------------------------------- name  ------------------------------------>
+        <td>{{ t.task_name }}</td>
+
+        <!-- state -->
+        <td>
+          <!-- active -->
+          <button
+            (click)="changeStateInactive(t)"
+            *ngIf="t.state === 'active'"
+            class="btn btn-outline-success btn-sm"
+          >
+            {{ "task.taskList.buttonActive" | translate }}
+          </button>
+          <!-- inactive -->
+          <button
+            (click)="changeStateActive(t)"
+            *ngIf="t.state === 'inactive'"
+            class="btn btn-outline-dark btn-sm"
+          >
+            {{ "task.taskList.buttonInactive" | translate }}
+          </button>
+          <!-- inConstruction -->
+          <button
+            *ngIf="t.state === 'inConstruction'"
+            class="btn btn-outline-warning btn-sm"
+            (click)="taskFinished(t)"
+          >
+            {{ "task.taskList.buttonConstruction" | translate }}
+          </button>
+        </td>
+
+        <!-- ---------------------------------------------- category and tags  ------------------------------------>
+        <td>
+          <!-- active -->
+
+          <button
+            *ngIf="t.state === 'active'"
+            [routerLink]="['/task-category', t.id_task]"
+            class="btn btn-primary"
+          >
+            <i class="fa fa-eye"></i>
+          </button>
+
+          <!-- inactive -->
+          <button
+            *ngIf="t.state === 'inactive'"
+            [disabled]="t.state === 'inactive'"
+            [routerLink]="['/task-category', t.id_task]"
+            class="btn btn-secondary"
+          >
+            <i class="fa fa-eye"></i>
+          </button>
+
+          <!-- Construction -->
+          <button
+            *ngIf="t.state === 'inConstruction'"
+            [routerLink]="['/create-category', t.id_task]"
+            class="btn btn-outline-warning btn-sm"
+          >
+            {{ "task.taskList.buttonAdd" | translate }}
+          </button>
+        </td>
+
+        <!-- ---------------------------------------------- azione  ------------------------------------>
+        <td>
+          <!-- donwload ----------------------->
+
+          <!-- active -->
+          <button
+            (click)="saveIdTask(t)"
+            *ngIf="t.state === 'active'"
+            class="btn btn-info mr-1"
+            data-toggle="modal"
+            data-target="#exampleModalCenter"
+          >
+            <i class="fa fa-download"></i>
+          </button>
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="exampleModalCenter"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">
+                    {{ "message.post.chooseTheFileYouWantToDownload" | translate }}
+                  </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    (click)="downloadCSVFileWithoutAnnotations()"
+                    type="button"
+                    class="btn btn-primary"
+                    data-dismiss="modal"
+                  >
+                    Post
+                  </button>
+                  <button
+                    (click)="downloadAnnotation()"
+                    type="button"
+                    data-dismiss="modal"
+                    class="btn btn-primary"
+                  >
+                    {{ "navbar.annotations" | translate }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- inactive -->
+          <button
+            *ngIf="t.state === 'inactive'"
+            [disabled]="t.state === 'inactive'"
+            class="btn btn-secondary mr-1"
+          >
+            <i class="fa fa-download"></i>
+          </button>
+
+          <!-- edit --------------------------->
+          <!-- active -->
+          <button
+            *ngIf="t.state === 'active'"
+            [routerLink]="['/task-edit', t.id_task]"
+            class="btn btn-success mr-1"
+          >
+            <i class="fa fa-pencil"></i>
+          </button>
+          <!-- inactive -->
+          <button
+            *ngIf="t.state === 'inactive'"
+            [disabled]="t.state === 'inactive'"
+            class="btn btn-secondary mr-1"
+          >
+            <i class="fa fa-pencil"></i>
+          </button>
+
+          <!-- delete ------------------>
+
+          <!-- active -->
+          <button *ngIf="t.state === 'active'" (click)="deleteTask(t)" class="btn btn-danger mr-1">
+            <i class="fa fa-trash"></i>
+          </button>
+          <!-- inactive -->
+          <button
+            *ngIf="t.state === 'inactive'"
+            [disabled]="t.state === 'inactive'"
+            class="btn btn-secondary mr-1"
+          >
+            <i class="fa fa-trash"></i>
+          </button>
+          <!-- inConstruction -->
+          <button
+            *ngIf="t.state === 'inConstruction'"
+            (click)="deleteTask(t)"
+            class="btn btn-danger mr-1"
+          >
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+
+        <!----------------------------------- post ------------------------------------------------------>
+        <td>
+          <!-- active -->
+          <button
+            *ngIf="t.state === 'active'"
+            [routerLink]="['/task-post', t.id_task]"
+            class="btn btn-info"
+          >
+            <i class="fa fa-eye"></i>
+          </button>
+          <!-- inactive -->
+          <button
+            *ngIf="t.state === 'inactive'"
+            [routerLink]="['/task-post', t.id_task]"
+            [disabled]="t.state === 'inactive'"
+            class="btn btn-secondary"
+          >
+            <i class="fa fa-folder-plus"></i>
+          </button>
+        </td>
+
+        <!----------------------------------------------- upload file csv ---------------------->
+        <td>
+          <input
+            *ngIf="t.state === 'active' || t.state === 'inactive'"
+            [disabled]="t.state === 'inactive'"
+            type="file"
+            #inputFile
+            (change)="insertFile($event.target.files[0])"
+          />
+          <!-- active -->
+          <button *ngIf="t.state === 'active'" (click)="uploadFile(t)" class="btn btn-info">
+            <i class="fa fa-upload"></i>
+          </button>
+          <!-- inactive -->
+          <button
+            *ngIf="t.state === 'inactive'"
+            [disabled]="t.state === 'inactive'"
+            (click)="uploadFile(t)"
+            class="btn btn-secondary"
+          >
+            <i class="fa fa-upload"></i>
+          </button>
+        </td>
+
+        <!--------------------------------------------------- assegnare ------------------------->
+        <td>
+          <!-- active -->
+
+          <button
+            *ngIf="t.state === 'active'"
+            [routerLink]="['/task-assign', t.id_task]"
+            class="btn btn-primary btn-sm"
+          >
+            {{ "task.taskList.buttonAssign" | translate }}
+          </button>
+          <!-- inactive -->
+
+          <button
+            *ngIf="t.state === 'inactive'"
+            [disabled]="t.state === 'inactive'"
+            [routerLink]="['/task-assign', t.id_task]"
+            class="btn btn-secondary btn-sm"
+          >
+            {{ "task.taskList.buttonAssign" | translate }}
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- loading -->
+  <div *ngIf="uploading" class="alert alert-info text-center mt-3">
+    <h4 class="alert-heading">{{ "task.alert.loading" | translate }}</h4>
+    <p>
+      <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+    </p>
+    <p class="mb-0">{{ "task.alert.pleaseWait" | translate }}</p>
+  </div>
+
+  <!-- lista di task vuoto -->
+  <div *ngIf="!uploading && tasks.length === 0" class="alert alert-warning text-center mt-3">
+    <h4 class="alert-heading">{{ "task.alert.thereAreNoTasksCreated" | translate }}i</h4>
+    <p>
+      <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+  </div>
+</div>

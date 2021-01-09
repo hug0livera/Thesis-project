@@ -1,0 +1,162 @@
+<app-navbar></app-navbar>
+
+<!-- breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a [routerLink]="['/task-edit', this.idTask]">{{
+        "task.updateTask.updateTask" | translate
+      }}</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a [routerLink]="['//category-edit', this.idTask, this.idCategory]">{{
+        "task.updateTask.updateCategory" | translate
+      }}</a>
+    </li>
+  </ol>
+</nav>
+
+<div class="container h-100 center_div" *ngFor="let t of tasks">
+  <!-- button -->
+  <div>
+    <button
+      [routerLink]="['/task-edit', this.idTask]"
+      class="btn btn-outline-primary"
+      style="float: right"
+    >
+      <i class="fa fa-arrow-left"></i> {{ "task.updateTask.updateTask" | translate }}
+    </button>
+  </div>
+
+  <h4 style="text-align: center">{{ "task.taskList.task" | translate }}: {{ t.task_name }}</h4>
+</div>
+
+<div class="container h-100 center_div">
+  <div class="row h-100 justify-content-center">
+    <!---------------------- Form Creare nuovo task --------------------------->
+    <form class="col-6" ngNativeValidate [formGroup]="formCategory" (ngSubmit)="updateCategory()">
+      <h4>{{ "task.updateTask.updateCategory" | translate }}</h4>
+      <hr />
+
+      <!--Nome della categoria -->
+      <div class="form-group">
+        <label for="">{{ "task.addCategories.categoryName" | translate }}</label>
+        <input
+          required
+          formControlName="tag_category_name"
+          type="text"
+          class="form-control"
+          aria-describedby="emailHelp"
+          [placeholder]="'task.addCategories.categoryName' | translate"
+        />
+      </div>
+
+      <!-- Obligatorietà -->
+      <div style="margin-bottom: 20px">
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            type="radio"
+            class="custom-control-input"
+            id="defaultInline1"
+            [value]="true"
+            name="mandatory"
+            formControlName="mandatory"
+            required
+          />
+          <label class="custom-control-label" for="defaultInline1">{{
+            "task.addCategories.obligatory" | translate
+          }}</label>
+        </div>
+
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            type="radio"
+            class="custom-control-input"
+            id="defaultInline2"
+            [value]="false"
+            name="mandatory"
+            formControlName="mandatory"
+            required
+          />
+          <label class="custom-control-label" for="defaultInline2">{{
+            "task.addCategories.optional" | translate
+          }}</label>
+        </div>
+      </div>
+
+      <!-- Funzionalità -->
+      <div style="margin-bottom: 20px">
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            type="radio"
+            class="custom-control-input"
+            id="multi_choice"
+            [value]="true"
+            name="multi_choice"
+            formControlName="multi_choice"
+            required
+          />
+          <label class="custom-control-label" for="multi_choice">{{
+            "task.addCategories.multipleChoice" | translate
+          }}</label>
+        </div>
+
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            type="radio"
+            class="custom-control-input"
+            id="multi_choice2"
+            [value]="false"
+            name="multi_choice"
+            formControlName="multi_choice"
+            required
+          />
+          <label class="custom-control-label" for="multi_choice2">{{
+            "task.addCategories.singleChoice" | translate
+          }}</label>
+        </div>
+      </div>
+
+      <!-- button Aggiungere Categoria-->
+      <button type="submit" class="btn btn-success mr-5">
+        <i class="fa fa-pen"></i> {{ "task.updateTask.buttonUpdate" | translate }}
+      </button>
+    </form>
+
+    <!-- table update -->
+    <table class="table col-6">
+      <tr class="table-primary">
+        <th scope="col"></th>
+        <th scope="col">{{ "task.addTag.tag" | translate }}</th>
+        <th scope="col">{{ "task.updateTask.updateTag" | translate }}</th>
+      </tr>
+      <tbody cdkDropList (cdkDropListDropped)="onDropped($event)">
+        <tr *ngFor="let t of tag; let i = index" cdkDrag>
+          <th scope="row">{{ i + 1 }}</th>
+
+          <td>
+            <span
+              style="
+                color: #000000;
+                border-radius: 25px;
+                border-style: solid;
+                border-width: 2px;
+                padding: 10px 24px;
+              "
+              [style.border-color]="t.color"
+              >{{ t.tag_name }}</span
+            >
+          </td>
+          <td>
+            <button
+              [routerLink]="['/tag-edit', this.idTask, this.idCategory, t.id_tag]"
+              class="btn btn-success btn-sm"
+            >
+              <i class="fa fa-pen"></i> {{ "task.updateTask.buttonUpdate" | translate }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

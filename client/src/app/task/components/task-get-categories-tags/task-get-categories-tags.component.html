@@ -1,0 +1,60 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <!-- button (<-) -->
+  <div>
+    <button
+      [routerLink]="['/task']"
+      type="button"
+      class="btn btn-outline-primary"
+      style="float: right"
+    >
+      <i class="fa fa-arrow-left"></i> {{ "task.taskList.task" | translate }}
+    </button>
+  </div>
+
+  <!-- task name and description -->
+  <div *ngFor="let c of categoryTag; first as isFirst">
+    <span *ngIf="isFirst">
+      <h4 class="margine">{{ "task.taskList.task" | translate }}: {{ c.task_name }}</h4></span
+    >
+    <span *ngIf="isFirst">
+      <h4>
+        {{ "task.createNewTask.taskDescription" | translate }}: {{ c.task_description }}
+      </h4></span
+    >
+  </div>
+</div>
+<hr />
+<div class="container col-10">
+  <!-- table -->
+  <table class="table" *ngFor="let t of categoryTag; let i = index; first as isFirst">
+    <thead>
+      <tr class="table-primary">
+        <th
+          style="text-align: center"
+          *ngIf="isFirst || t.tag_category_name !== categoryTag[i - 1].tag_category_name"
+        >
+          {{ "task.addCategories.category" | translate }}: {{ t.tag_category_name }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="text-align: center">
+        <td>
+          <span
+            style="
+              color: #000000;
+              border-radius: 25px;
+              border-style: solid;
+              border-width: 2px;
+              padding: 10px 24px;
+            "
+            [style.border-color]="t.color"
+            >{{ t.tag_name }}</span
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+
+<div class="container h-100 center_div">
+  <div class="row h-100 justify-content-center">
+    <div class="container col-6">
+      <div>
+        <h4>{{ "task.post.uploadCsvFile" | translate }}</h4>
+        <!-- upload file csv -->
+        <input type="file" #inputFile1 (change)="insertFile($event.target.files[0])" />
+        <button [disabled]="uploadedFile" (click)="uploadFile()" class="btn btn-info ml-1">
+          <i class="fa fa-upload"> </i> {{ "task.addTag.buttonUpload" | translate }}
+        </button>
+
+        <hr />
+        <h4>{{ "task.post.uploadZipFileWithImages" | translate }}</h4>
+      </div>
+
+      <!--   upload iamges -->
+      <div>
+        <input type="file" #inputFile2 (change)="insertFileZip($event.target.files[0])" />
+        <button [disabled]="uploadedImage" class="btn btn-info mr-1" (click)="uploadFileZip()">
+          <i class="fa fa-file-archive"> </i> Decomprimere file zip<!-- {{ "task.addTag.buttonUpload" | translate }} -->
+        </button>
+      </div>
+      <button class="btn btn-success" (click)="uploadImage()">
+        <i class="fa fa-upload"></i>
+
+        Carica l'immagini<!-- {{ "task.post.buttonUpload" | translate }} -->
+      </button>
+      <hr />
+      <button class="btn btn-danger mr-1" [routerLink]="['/task']">
+        {{ "task.taskList.goOut" | translate }}
+      </button>
+    </div>
+  </div>
+</div>

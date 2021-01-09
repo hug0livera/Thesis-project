@@ -1,0 +1,281 @@
+{
+  "navbar": {
+    "Language": "Lingua",
+    "English": "English",
+    "Italian": "Italian",
+    "users": "Utente",
+    "statistics": "Statistiche",
+    "userStatistics": "Statistiche degli utenti",
+    "taskStatistics": "Statistiche dei tasks",
+    "annotations": "Annotazioni"
+  },
+
+  "task": {
+    "taskList": {
+      "name": "Nome",
+      "state": "Stato",
+      "categoriesAndTags": "Categorie e tags",
+      "actions": "Azioni",
+      "uploadPost": "Caricare i  post",
+      "assignTask": "Assegnare il  task",
+      "buttonActive": "Attivo",
+      "buttonInactive": "Inattivo",
+      "buttonConstruction": "Costruzione",
+      "buttonAssign": "Assegnare",
+      "buttonCreateNewTask": "Creare un nuovo task",
+      "buttonAdd": "Aggiungere",
+      "task": "Task",
+      "goOut": "Uscire",
+      "cancelTasks": "Annullare task",
+      "advancedOptions": "Opzioni avanzate"
+    },
+    "createNewTask": {
+      "createNewTask": "Creare un nuovo task",
+      "taskName": "Nome del task",
+      "chanceValue": "Valore di casualità",
+      "randomThreshold": "Valore di soglia",
+      "taskDescription": " Descrizione",
+      "taskInConstruction": "Task in costruzione",
+      "addCategories": "Aggiungere categorie",
+      "buttonAdd": "Aggiungere"
+    },
+    "addCategories": {
+      "addCategories": "Aggiungere categoria",
+      "categoryName": "Nome della categoria",
+      "index": "Index",
+      "obligatory": "Obbligatoria",
+      "optional": "Opzionale",
+      "functionality": "Opzionale",
+      "multipleChoice": "Scelta multipla",
+      "singleChoice": "Scelta unica",
+      "category": "Categorie",
+      "buttonAdd": "Aggiungi",
+      "buttonFinalizeTask": "Finalizza task",
+      "addTag": "Aggiungi tag",
+      "buttonCateogry": "Categoria",
+      "buttonAddModeCategories": "Aggiungi più categorie",
+      "remove": "Elimina",
+      "updateIndex": "Aggiorna indice"
+    },
+    "addTag": {
+      "addTag": "Aggiungi tag",
+      "tagName": "Nome del tag",
+      "color": "Colore",
+      "behavior": "Behavior",
+      "categoryName": "Categoria",
+      "normalTag": "Tag normale",
+      "cancelTheCategory": "Annulla la categoria",
+      "cancelAllTagsInTheSelection": "Annulla tutti i tag nella selezione",
+      "tag": "Tag",
+      "buttonUpload": "Carica"
+    },
+    "updateTask": {
+      "updateTask": "Aggiorna il task",
+      "category": "Categoria",
+      "updateCategory": "Aggiorna la categoria",
+      "buttonUpdate": "Aggiorna",
+      "updateTag": "Aggiorna tag",
+      "updateUser": "Aggiorna utente"
+    },
+    "post": {
+      "text": "Testo",
+      "category": "Categoria",
+      "image": "Immagine",
+      "buttonUnzip": "Decomprimi",
+      "buttonUpload": "Carica",
+      "grid": "Griglia",
+      "list": "Lista",
+      "uploadFile": "Carica file",
+      "uploadCsvFile": "Carica il file CSV",
+      "uploadZipFileWithImages": "Carica l'immagini"
+    },
+    "assignTask": {
+      "assignTask": "Assegna task",
+      "buttonAssign": "Assegna",
+      "listOfAssignedUsers": "Lista degli utenti assegnati",
+      "mail": "mail",
+      "deleteAssignment": "Elimina assegnamento",
+      "disableAssignment": "Disattiva assegnamento",
+      "deactivate": "Disattiva ",
+      "activate": "Attiva"
+    },
+
+    "alert": {
+      "loading": "Caricamento in corso",
+      "pleaseWait": "Attendere prego",
+      "thereAreNoTasksCreated": "Non ci sono Task creati",
+      "ThereAreNoUsersToAssign": "Non ci sono utenti da assegnare",
+      "ThereAreNoTasksUnderConstruction": "Non ci sono task in costruzione",
+      "ThereAreNoPosts": "Non ci sono post",
+      "ThereAreNoUsersCreated": "Non ci sono utenti creati",
+      "ThereAreNoAssignedTasks": "Non ci sono task assegnati",
+      "ThereAreNoTasksCreated": "Non ci sono task creati",
+      "thisTaskHasNoCategories": "Non ci sono categorie create",
+      "thereAreNoTagsCreated": "Non ci sono tag creati",
+      "YouCanOnlyUploadZipFiles": "Puoi caricare solo file zip con le immagini",
+      "thereAreNoAssignedUsers": "Non ci sono utenti assegnati",
+      "Indexupdatedsuccessfully": "Indice aggiornato con successo"
+    }
+  },
+  "user": {
+    "userList": {
+      "createUser": "Crea nuovo utente",
+      "user": "Utenti",
+      "name": "Nome",
+      "email": "Email",
+      "password": "Password",
+      "gender": "Genere",
+      "role": "Ruolo",
+      "phone": "Telefono",
+      "AssignTheObserverRole": "Assegna il ruolo di osservatore",
+      "InviteToUseThePlatform": "Invito a utilizzare la piattaforma",
+      "buttonAssign": "Assegna",
+      "buttonInvites": "Invita",
+      "createNewUser": "Utente creato con successo",
+      "errorUserCreation": "Mail sbagliata",
+      "theUserAlreadyExists": "L'utente non è stato invitato o esiste già un utente con questa mail",
+      "buttonChanges": "Cambia",
+      "userInvitedSuccessfully": "Utente invitato con successo",
+      "userRoleChangedSuccessfully": "Ruolo dell'utente cambiato con successo",
+      "changeRole": "Cambia ruolo",
+      "administrator": "Amministratore",
+      "generic": "generico",
+      "observer": "Osservatore",
+      "successfullyUpdated": "Aggiornato con successo",
+      "generate": "Genera",
+      "thePasswordCouldNotBeChanged": "Non è stato possibile cambiare la password"
+    },
+    "createUser": {
+      "generatePasswords": "Genera password",
+      "buttonUsers": "Utenti",
+      "buttonCreate": "Crea",
+      "other": "altro",
+      "male": "maschile",
+      "female": "femminile",
+      "theUserHasBeenInvitedByEmail": "l'utente è stato invitato tramite mail",
+      "invitationToUseThePlatform": "Invito ad usare la piattaforma",
+      "yourCredentialsToAccessThePlatformAre": "Le tue credenziali per accedere alla piattaforma sono:",
+      "TheUserWasNotCreatedSuccessfully": "L'utente non è stato creato con successo"
+    }
+  },
+
+  "statistics": {
+    "user": {
+      "NumberOfAssignedTasks": "Numero di task assegnati",
+      "DaysPassedSinceTheirLastEntry": "Giorni passati dall'ultima annotazione",
+      "AssignedTasks": "Task assegnati",
+      "TaskCompleted": "Task completato",
+      "userStatistics": "Statistiche degli utenti",
+      "HeDidntMakeAnyAnnotation": "Non ha fatto nessuna annotazione",
+      "buttonAssigned": "Assegnare",
+      "user": "Utente",
+      "PercentageOfAnnotation": "Percentuale di annotazione"
+    },
+    "task": {
+      "NumberOfPosts": "Numero di post",
+      "NumberOfPostsThatHaveAnnotationsDone": "Numero di post con annotazioni svolte",
+      "TotalUsersAssigned": "Totale di utenti assegnati",
+      "UsersAssignedToTheTask": "Utenti assegnati al task",
+      "DownloadTheAnnotationsAlreadyMade": "Scarica le annotazioni già svolte",
+      "buttonAssignedUsers": "Utenti assegnati",
+      "TaskCompleted": "Task completato",
+      "NumberOfAnnotationsPerformedOnTheTask": "Numero di annotazioni svolte sul task",
+      "NumberOfDaysSinceLastAnnotation": "Numero di giorni passati dall'annotazione",
+      "HeDidntMakeAnyNotes": "Non ha fatto nessuna annotazione",
+      "buttontaskStatistics": "Statistiche dei task"
+    }
+  },
+
+  "guard": {
+    "access": "È necessario eseguire prima il login"
+  },
+
+  "userco": {
+    "guide": "Linee guida annotazione",
+    "category": "Categoria",
+    "prev": "Precedente",
+    "next": "Successivo",
+    "code": "codice post : ",
+
+    "stat1": "Oggi hai annotato",
+    "stat2": "post: in totale hai annotato",
+
+    "stat3": "del totale",
+    "personal": "Profilo",
+
+    "oggi": "annotazioni di oggi",
+    "completamento": "completato al",
+    "ultimogiorno": "ultima annotazione",
+    "days": "giorni",
+    "hours": "ore",
+    "min": "minuti",
+    "vincoloerr": "Rispettare i vincoli delle categorie",
+    "dayvincoli": "i giorni devono essere >=0!",
+    "mailerror": "mail già  presente",
+    "mailformat": "formato mail non corretto",
+    "day_rem": "Ricorda ogni (giorni)",
+    "telegram": "Codice Autenticazione Telegram",
+    "conferma": "Conferma",
+    "never": "Mai"
+  },
+  "message": {
+    "task": {
+      "taskCreatedSuccessfully": "Task creato con successo",
+      "theTaskNameExists": "Il nome del task esiste",
+      "TheTaskMustHaveAtLeastOneCategory": "Il task deve avere almeno una categoria",
+      "taskAssignedSuccessfully": "Task assegnato con successo",
+      "changeTheTaskName": "Creare il task con un altro nome",
+      "TaskCompletedWithSuccess": "Task completato con successo",
+      "taskUpdatedSuccessfully": "Task aggiornato con successo",
+      "areYouSureIWillEliminateTheTask": "Sei sicuro di eliminare il task?",
+      "deleted": "Eliminato",
+      "TheTaskHasBeenDeleted": "Il task è stato eliminato",
+      "yes": "Si",
+      "no": "No",
+      "AllCategoriesOfTheTaskMustHaveAtLeastOneTag": "Tutte le categorie del task devono avere almeno un tag",
+      "areYouSureYouDeleteTheAssignment": "Sei sicuro di eliminare l'assegnamento?",
+      "theAssignmentwascanceled": "L'assegnamento è stato cancellato",
+      "theAssignmentCannotBeDeleted": "L'assegnamento non può essere eliminato",
+      "TheUserHasAlreadyMadeSomeAnnotations": "L'utente ha già fatto delle annotazioni. Puoi solo disattivare l'assegnamento ",
+      "youCanNowUploadThePostsOrImages": " Ora puoi caricare i post e l'immagini",
+      "areYouSureToChangeTheUserPassword": "Sei sicuro di cambiare la password dell'utente?"
+    },
+    "user": {
+      "userUpdatedSuccessfully": "Utente aggiornato con successo",
+      "youAreSureToDeleteTheUser": "Sei sicuro di eliminare l'utente",
+      "userDeleted": "Utente eliminato",
+      "generateNewPassword": "Generare nuova password",
+      "thePasswordHasBeenChanged": "La password è stata cambiata con successo",
+      "hasBeenNotifiedToTheUserViaHisEmail": "è stata notificata tramite mail"
+    },
+    "category": {
+      "categoryUpdatedSuccessfully": "Categoria aggiornata con successo",
+      "categorySuccessfullyAdded": "Categoria aggiunta con successo",
+      "TheCategoryNameExists": "Il nome della categoria già esiste",
+      "CreateTheCategoryWithAnotherName": "Creare la categoria con un altro nome",
+      "areYouSureToDeleteTheCategory": "Sei sicuro di eliminare la categoria?",
+      "theCategoryWasSuccessfullyDeleted": "La categoria è stata eliminata con successo"
+    },
+
+    "tag": {
+      "tagUpdatedSuccessfully": "Tag aggiornato con successo",
+      "TagAddedSuccessfully": "Tag aggiunto con successo",
+      "TheTagNameAlreadyExists": "Il nome del tag esiste o non hai inserito il colore",
+      "CreateTheTagWithAnotherName": "Creare il tag con un altro nome o inserire il colore",
+      "YouAreSureToDeleteTheTag": "Sei sicuro di eliminare il tag?",
+      "TheTagHasBeenDeleted": "Il tag è stato eliminato"
+    },
+    "post": {
+      "PostUploadedSuccessfully": "Il file è stato caricato con successo",
+      "UploadedFileIsNotAValid": "Il file caricato non è valido",
+      "OnlyCSVFileCanBeUploaded": "È possibile caricare solo file CSV",
+      "FileZipUploaded": "File Zip caricato con successo",
+      "NoFilesWereUploaded": "Nessun file è stato caricato o il tipo di file non è ammesso",
+      "imagesUploadedSuccessfully": "Immagini caricate con successo",
+      "ThereAreNoImagesToUpload": "Errore durante il caricamento delle immagini",
+      "error": "Errore",
+      "CSVFileEmpty": "File CSV vuoto",
+      "chooseTheFileYouWantToDownload": "Scegliere il file che desidera scaricare"
+    }
+  }
+}

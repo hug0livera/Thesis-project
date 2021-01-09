@@ -1,0 +1,96 @@
+<app-navbar></app-navbar>
+
+<div class="container col-10 margine2">
+  <!-- button to create a new user -->
+  <div>
+    <button
+      [routerLink]="['/user-create']"
+      type="button"
+      class="btn btn-primary"
+      style="float: right"
+    >
+      <i class="fa fa-users"></i> {{ "user.userList.createUser" | translate }}
+    </button>
+  </div>
+
+  <h4 class="margine">{{ "user.userList.user" | translate }}</h4>
+
+  <!-- list of users -->
+  <table class="table">
+    <tr class="table-primary">
+      <th scope="col"></th>
+      <th scope="col">{{ "user.userList.name" | translate }}</th>
+      <th scope="col">{{ "user.userList.email" | translate }}</th>
+      <th scope="col">{{ "user.userList.gender" | translate }}</th>
+      <th scope="col">{{ "user.userList.role" | translate }}</th>
+      <th scope="col">{{ "task.taskList.actions" | translate }}</th>
+      <th scope="col">{{ "message.user.generateNewPassword" | translate }}</th>
+    </tr>
+    <tbody *ngIf="users.length > 0">
+      <tr *ngFor="let user of users; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.gender }}</td>
+        <td>
+          <span *ngIf="!user.observer && !user.administrator">
+            {{ "user.userList.generic" | translate }}</span
+          ><span *ngIf="user.observer && !user.administrator">
+            {{ "user.userList.observer" | translate }}</span
+          >
+          <span *ngIf="user.administrator"> {{ "user.userList.administrator" | translate }}</span>
+        </td>
+        <td>
+          <button [routerLink]="['/user-edit', user.id_user]" class="btn btn-success mr-1">
+            <i class="fa fa-pencil"></i>
+          </button>
+          <button
+            *ngIf="!user.administrator"
+            class="btn btn-danger mr-1"
+            (click)="deleteUser(user.id_user)"
+          >
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+
+        <td>
+          <button
+            class="btn btn-danger mr-1 btn-sm"
+            (click)="generateNewPassword(user.id_user, user)"
+          >
+            {{ "user.userList.generate" | translate }}
+          </button>
+        </td>
+        <!--  <td>
+          <button
+            *ngIf="!user.administrator"
+            (click)="updateRole(user.id_user)"
+            class="btn btn-primary"
+          >
+            {{ "user.userList.buttonChanges" | translate }}
+          </button> 
+        </td> -->
+        <!--    <td>
+           <span *ngIf="!user.invited_user">
+            <button (click)="inviteUser(user)" class="btn btn-success">
+              {{ "user.userList.buttonInvites" | translate }}
+            </button></span
+          >
+          <span *ngIf="user.invited_user">
+            <button (click)="inviteUser(user)" [disabled]="true" class="btn btn-success">
+              {{ "user.userList.buttonInvites" | translate }}
+            </button></span >
+          
+        </td> -->
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- lista di task vuoto -->
+  <div *ngIf="users.length === 0" class="alert alert-warning text-center mt-3">
+    <h4 class="alert-heading">{{ "task.alert.ThereAreNoUsersCreated" | translate }}</h4>
+    <p>
+      <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+  </div>
+</div>

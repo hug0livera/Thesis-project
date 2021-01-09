@@ -1,0 +1,71 @@
+<app-navbar *ngIf="authService.adminRole === true"></app-navbar>
+
+<app-navbar-observer *ngIf="authService.observer === true"></app-navbar-observer>
+
+<div class="container">
+  <!-- button -->
+  <div>
+    <button
+      [routerLink]="['/task-statistics']"
+      type="button"
+      class="btn btn-outline-primary"
+      style="float: right"
+    >
+      <i class="fa fa-arrow-left"></i> {{ "statistics.task.buttontaskStatistics" | translate }}
+    </button>
+  </div>
+
+  <div *ngFor="let t of task; first as isFirst">
+    <h4 class="margine">{{ "task.taskList.task" | translate }}: {{ t.task_name }}</h4>
+  </div>
+
+  <br />
+  <table class="table">
+    <tr class="table-primary">
+      <th scope="col"></th>
+      <th scope="col">{{ "task.taskList.name" | translate }}</th>
+      <th scope="col">{{ "user.userList.email" | translate }}</th>
+      <th scope="col">{{ "statistics.task.TaskCompleted" | translate }}</th>
+      <th scope="col">{{ "statistics.task.NumberOfAnnotationsPerformedOnTheTask" | translate }}</th>
+      <th scope="col">{{ "statistics.task.NumberOfDaysSinceLastAnnotation" | translate }}</th>
+    </tr>
+    <tbody *ngIf="taskStatics.length > 0">
+      <tr *ngFor="let t of taskStatics; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+
+        <td>{{ t.name }}</td>
+        <td>{{ t.email }}</td>
+        <td>
+          <span
+            *ngIf="
+              t.number_annotation == t.post_intotal &&
+              t.number_annotation !== null &&
+              t.post_intotal !== null
+            "
+            >Si</span
+          ><span *ngIf="t.number_annotation != t.post_intotal || t.number_annotation == null"
+            >No</span
+          >
+        </td>
+        <td>
+          <span *ngIf="t.number_annotation == null">0</span>
+          <span *ngIf="t.number_annotation != null">{{ t.number_annotation }}</span>
+        </td>
+        <td>
+          <span *ngIf="t.day != null">{{ t.day }}</span>
+          <span *ngIf="t.day == null">{{ "statistics.task.HeDidntMakeAnyNotes" | translate }}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- lista di task vuoto -->
+  <div *ngIf="taskStatics.length === 0" class="alert alert-warning text-center mt-3">
+    <h4 class="alert-heading">
+      {{ "task.alert.ThereAreNoUsersToAssign" | translate }}
+    </h4>
+    <p>
+      <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+  </div>
+</div>

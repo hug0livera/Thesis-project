@@ -1,0 +1,287 @@
+{
+  "navbar": {
+    "Language": "Language",
+
+    "users": "Users",
+    "createNewUser": "Create new user",
+    "AssignObserverRole": "Assign the observer role",
+    "createNewTask": "Create a new task",
+    "assignTasksUser": "Assign tasks to a user",
+    "modifyTask": "Edit task",
+    "statistics": "Statistics",
+    "userStatistics": "User statistics",
+    "taskStatistics": "Task statistics",
+    "English": "English",
+    "Italian": "Italian",
+    "annotations": "Annotations"
+  },
+
+  "task": {
+    "taskList": {
+      "name": "Name",
+      "state": "State",
+      "categoriesAndTags": "Categories and tags",
+      "actions": "Actions",
+      "uploadPost": "Upload post",
+      "assignTask": "Assign task",
+      "buttonActive": "Active",
+      "buttonInactive": "Inactive",
+      "buttonConstruction": "Construction",
+      "buttonAssign": "Assign",
+      "buttonCreateNewTask": "Create new task",
+      "buttonAdd": "Add",
+      "task": "Task",
+      "goOut": "Go out",
+      "cancelTasks": "Cancel task",
+      "advancedOptions": "Advanced options"
+    },
+    "createNewTask": {
+      "createNewTask": "Create new task",
+      "taskName": "Name of the task",
+      "chanceValue": "Chance value",
+      "randomThreshold": "Random Threshold",
+      "taskDescription": " Description",
+      "taskInConstruction": "Task in construction",
+      "addCategories": "Add categories",
+      "buttonAdd": "Add"
+    },
+    "addCategories": {
+      "addCategories": "Add categories",
+      "categoryName": "category name",
+      "index": "Index",
+      "obligatory": "Obligatory",
+      "optional": "Optional",
+      "functionality": "Functionality",
+      "multipleChoice": "Multiple choice",
+      "singleChoice": "Single choice",
+      "category": "Category",
+      "buttonAdd": "Add",
+      "buttonFinalizeTask": "Finalize task",
+      "addTag": "Add Tag",
+      "buttonCateogry": "Category",
+      "buttonAddModeCategories": "Add more categories",
+      "remove": "Remove",
+      "updateIndex": "update index"
+    },
+    "addTag": {
+      "addTag": "Add tag",
+      "tagName": "Tag name",
+      "color": "Color",
+      "behavior": "Behavior",
+      "categoryName": "Category",
+      "normalTag": "Normal tag",
+      "cancelTheCategory": "Cancel the category",
+      "cancelAllTagsInTheSelection": "Cancel all tags in the selection",
+      "tag": "Tag",
+      "buttonUpload": "Upload"
+    },
+    "updateTask": {
+      "updateTask": "Update the task",
+      "category": "Category",
+      "updateCategory": "Update Category",
+      "buttonUpdate": "Update",
+      "updateTag": "Update tag",
+      "updateUser": "Update user"
+    },
+    "post": {
+      "text": "Text",
+      "category": "Category",
+      "image": "image",
+      "buttonUnzip": "Unzip",
+      "buttonUpload": "Upload",
+      "grid": "Grid",
+      "list": "List",
+      "uploadFile": "Upload file",
+      "uploadCsvFile": "Upload CSV File",
+      "uploadZipFileWithImages": "Upload the images"
+    },
+    "assignTask": {
+      "assignTask": "Assign task",
+      "buttonAssign": "Assign",
+      "listOfAssignedUsers": "List of assigned users",
+      "mail": "mail",
+      "deleteAssignment": "Delete assignment",
+      "disableAssignment": "Disable assignment",
+      "deactivate": "Deactivate",
+      "activate": "Activate"
+    },
+
+    "alert": {
+      "loading": "Loading",
+      "pleaseWait": "Please wait",
+      "thereAreNoTasksCreated": "There are no tasks created",
+      "ThereAreNoUsersToAssign": "There are no users to assign",
+      "ThereAreNoTasksUnderConstruction": "There are no tasks under construction",
+      "ThereAreNoPosts": "There are no posts",
+      "ThereAreNoUsersCreated": "There are no users created",
+      "ThereAreNoAssignedTasks": "There are no assigned tasks",
+      "ThereAreNoTasksCreated": "There are no tasks created",
+      "thisTaskHasNoCategories": "There are no categories created",
+      "thereAreNoTagsCreated": "There are no tags created",
+      "YouCanOnlyUploadZipFiles": "You can only upload zip files",
+      "thereAreNoAssignedUsers": "There are no assigned users",
+      "Indexupdatedsuccessfully": "Index updated successfully"
+    }
+  },
+  "user": {
+    "userList": {
+      "createUser": "Create new user",
+      "user": "Users",
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "gender": "Gender",
+      "role": "Role",
+      "phone": "Phone",
+      "AssignTheObserverRole": "Assign the observer role",
+      "InviteToUseThePlatform": "Invite to use the platform",
+      "buttonAssign": "Assign",
+      "buttonInvites": "Invites",
+      "createNewUser": "You created the new user: ",
+      "errorUserCreation": "Wrong mail",
+      "theUserAlreadyExists": "The user has not been invited or a user already exists with this email",
+      "buttonChanges": "Changes",
+      "userInvitedSuccessfully": "User invited successfully",
+      "userRoleChangedSuccessfully": "User role changed successfully",
+      "changeRole": "Change role",
+      "administrator": "Administrator",
+      "generic": "Generic",
+      "observer": "Observer",
+      "successfullyUpdated": "successfully updated",
+      "generate": "Generate",
+      "thePasswordCouldNotBeChanged": "The password could not be changed"
+    },
+    "createUser": {
+      "generatePasswords": "Generate passwords",
+      "buttonUsers": "User",
+      "buttonCreate": "Create",
+      "other": "Other",
+      "male": "male",
+      "female": "female",
+      "theUserHasBeenInvitedByEmail": "the user has been invited by email",
+      "invitationToUseThePlatform": "Invitation to use the platform",
+      "yourCredentialsToAccessThePlatformAre": "Your credentials to access the platform are:",
+      "TheUserWasNotCreatedSuccessfully": "The user was not created successfully"
+    }
+  },
+
+  "statistics": {
+    "user": {
+      "NumberOfAssignedTasks": "Number of assigned tasks",
+      "DaysPassedSinceTheirLastEntry": "Days passed since their last annotation",
+      "AssignedTasks": "Assigned task",
+      "TaskCompleted": "Task completed",
+      "userStatistics": "User statistics",
+      "HeDidntMakeAnyAnnotation": "He didn't make any annotation",
+      "buttonAssigned": "Assigned",
+      "user": "User",
+      "PercentageOfAnnotation": "Percentage of annotation"
+    },
+    "task": {
+      "NumberOfPosts": "Number of posts",
+      "NumberOfPostsThatHaveAnnotationsDone": "Number of posts that have annotations done",
+      "TotalUsersAssigned": "Total users assigned",
+      "UsersAssignedToTheTask": "Users assigned to the task",
+      "DownloadTheAnnotationsAlreadyMade": "Download the annotations already made",
+      "buttonAssignedUsers": "Assigned users",
+      "TaskCompleted": "Task completed",
+      "NumberOfAnnotationsPerformedOnTheTask": "Number of annotations performed on the task",
+      "NumberOfDaysSinceLastAnnotation": "Number of days since last annotation",
+      "HeDidntMakeAnyNotes": "He didn't make any notes",
+      "buttontaskStatistics": "Task statistics"
+    }
+  },
+
+  "guard": {
+    "access": "You must login first"
+  },
+
+  "userco": {
+    "guide": "annotation guidelines",
+    "category": "Category",
+    "prev": "Previous",
+    "next": "Next",
+
+    "stat1": "Today you annoted",
+    "stat2": "post: Totally you annoted",
+
+    "stat3": "of total",
+
+    "personal": "Profile",
+    "code": "post code : ",
+    "oggi": "today annotation",
+    "completamento": "completed at",
+    "ultimogiorno": "last annotation ago",
+    "days": "days",
+    "hours": "hours",
+    "min": "minutes",
+    "vincoloerr": "Respect the constraints of categories",
+    "dayvincoli": "days must be >=0!",
+    "mailerror": "mail already exists",
+    "mailformat": "mail structure not correct",
+    "day_rem": "Remind every (days)",
+    "telegram": "Telegram Authentication code",
+    "conferma": "Submit",
+    "never": "Never"
+  },
+  "message": {
+    "task": {
+      "taskCreatedSuccessfully": "Task created successfully",
+      "theTaskNameExists": "The task name exists",
+      "TheTaskMustHaveAtLeastOneCategory": "The task must have at least one category",
+      "taskAssignedSuccessfully": "task assigned successfully",
+      "changeTheTaskName": "Create the task with another name",
+      "TaskCompletedWithSuccess": "Task completed with success",
+      "taskUpdatedSuccessfully": "task updated successfully",
+      "areYouSureIWillEliminateTheTask": "Are you sure I will eliminate the task?",
+      "deleted": "deleted",
+      "TheTaskHasBeenDeleted": "The task has been deleted",
+      "yes": "yes",
+      "no": "no",
+      "AllCategoriesOfTheTaskMustHaveAtLeastOneTag": "All categories of the task must have at least one tag",
+      "areYouSureYouDeleteTheAssignment": "Are you sure you delete the assignment?",
+      "theAssignmentwascanceled": "The assignment was canceled",
+      "theAssignmentCannotBeDeleted": "The assignment cannot be deleted",
+      "TheUserHasAlreadyMadeSomeAnnotations": "The user has already made some annotations. You can only deactivate the assignment ",
+      "youCanNowUploadThePostsOrImages": "You can now upload the posts and images",
+      "areYouSureToChangeTheUserPassword": "Are you sure to change the user's password?"
+    },
+    "user": {
+      "userUpdatedSuccessfully": "Utente aggiornato con successo",
+      "youAreSureToDeleteTheUser": "Sei sicuro di eliminare l'utente",
+      "userDeleted": "Utente eliminato",
+      "generateNewPassword": "generate new password",
+      "thePasswordHasBeenChanged": "The password was changed successfully",
+      "hasBeenNotifiedToTheUserViaHisEmail": "has been notified to the user via his email"
+    },
+    "category": {
+      "categoryUpdatedSuccessfully": "category updated successfully",
+      "categorySuccessfullyAdded": "category successfully added",
+      "TheCategoryNameExists": "The category name exists",
+      "CreateTheCategoryWithAnotherName": "Create the category with another name",
+      "areYouSureToDeleteTheCategory": "Are you sure to delete the category?",
+      "theCategoryWasSuccessfullyDeleted": "The category was successfully deleted"
+    },
+
+    "tag": {
+      "tagUpdatedSuccessfully": "tag updated successfully",
+      "TagAddedSuccessfully": "Tag added successfully",
+      "TheTagNameAlreadyExists": "Tag name exists or you haven't entered color",
+      "CreateTheTagWithAnotherName": "Create the tag with another name or enter the color",
+      "YouAreSureToDeleteTheTag": "Are you sure you delete the tag?",
+      "TheTagHasBeenDeleted": "the tag has been deleted"
+    },
+    "post": {
+      "PostUploadedSuccessfully": "File uploaded successfully",
+      "UploadedFileIsNotAValid": "Uploaded file is not a valid",
+      "OnlyCSVFileCanBeUploaded": "Only CSV file can be uploaded",
+      "FileZipUploaded": "File Zip uploaded",
+      "NoFilesWereUploaded": "No files were uploaded or the type of the file is not admited",
+      "imagesUploadedSuccessfully": "images uploaded successfully",
+      "ThereAreNoImagesToUpload": "Error loading images",
+      "error": "Error",
+      "CSVFileEmpty": "CSV file empty",
+      "chooseTheFileYouWantToDownload": "Choose the file you want to download"
+    }
+  }
+}

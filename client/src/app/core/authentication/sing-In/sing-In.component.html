@@ -1,0 +1,46 @@
+<app-navbar-login></app-navbar-login>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <!-- form -->
+            <form ngNativeValidate #form="ngForm" class="form-signin" (ngSubmit)="login(form)">
+              <h1 class="card-title text-center">Login</h1>
+              <!-- email -->
+              <div class="form-group">
+                <input
+                  type="email"
+                  required
+                  name="email"
+                  ngModel
+                  class="form-control"
+                  placeholder="email"
+                />
+              </div>
+              <!-- password -->
+              <div class="form-group">
+                <input
+                  ngModel
+                  type="password"
+                  name="password"
+                  required
+                  class="form-control"
+                  placeholder="Password"
+                  minlength="5"
+                />
+              </div>
+
+              <hr />
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">
+                Login
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

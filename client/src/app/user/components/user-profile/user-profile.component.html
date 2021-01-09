@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+
+<div class="container h-100 center_div">
+  <!-- form to create a new user -->
+  <div class="row h-100 justify-content-center align-items-center">
+    <form ngNativeValidate [formGroup]="form" (ngSubmit)="reminderDay()" class="col-6">
+      <h4>Telegram</h4>
+      <hr />
+      <!-- code -->
+      <div class="form-group">
+        <label for="exampleInputEmail1">{{ "userco.telegram" | translate }}</label>
+        <input
+          required
+          formControlName="code"
+          name="name"
+          type="name"
+          class="form-control"
+          id="name"
+          [readOnly]="true"
+          [placeholder]="'userco.telegram' | translate"
+        />
+      </div>
+
+      <!-- days -->
+      <div class="form-group">
+        <label for="exampleInputPassword1">{{ "userco.day_rem" | translate }}</label>
+        <select formControlName="days" class="form-control" required ngModel>
+          <option value="0">{{ "userco.never" | translate }}</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+        </select>
+      </div>
+
+      <!-- button -->
+      <button type="submit" class="btn btn-primary">
+        {{ "userco.conferma" | translate }}
+      </button>
+    </form>
+  </div>
+</div>
